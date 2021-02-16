@@ -60,13 +60,14 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible's agentless architecture allows for flexible integration, and efficient and seamless deployement, while eliminating human error across systems.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- ...Install Docker.
+- ...Download cmage.
+- ...Configure container.
+- ...Download and launch a docker elk container.
+- ...Enables service docker on boot.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -85,11 +86,14 @@ We have installed the following Beats on these machines:
 - Metricbeat v7.4.0
 
 These Beats allow us to collect the following information from each machine:
+
 - Filebeat monitors, collects, and records log files or locations that we specify, and forwards them to either Elasticsearch or Logstach for indexing. Belows image is an example of a Kibana dashboard that is actively collecting Filebeat data.
 
-![Screenshot Filebeat Dashboard](Images/ELK_Docker_Running.png)
+![Screenshot Filebeat Dashboard](Images/Kibana_Filebeat_Dashboard.png)
 
-- Metricbeat and _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Metricbeat is a detailed lightweight shipper that periodically collects metrics from the operating system and from services running on it. Once you deploy Metricbeat and connect it to Elasticsearch, you get system-level CPU usage, memory, file system, disk IO, and network IO statistics, as well as top-like statistics for every process running on your systems.
+
+![Screenshot Metricbeat Dashboard](Images/Kibana_Metricbeat_Dashboard.png)
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
