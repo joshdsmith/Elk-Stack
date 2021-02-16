@@ -116,4 +116,4 @@ curl https://raw.githubusercontent.com/joshdsmith/Elk-Stack/main/Ansible/Beat-pl
 ```
 - Update the filebeat-config.yml file to include your ELK servers private IP address in line 1106 and 1806.
 - Update the metricbeat-config.yml file to include your ELK servers private IP address in line 62 and 95.
-- Run the playbooks using the command `ansible-playbook /etc/ansible/roles/filebeat-playbook.yml && ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml`. Then navigate to kibana at [ELK public IP]/app/kibana to check that the installation worked as expected.
+- Run the playbooks using the command `ansible-playbook /etc/ansible/roles/filebeat-playbook.yml && ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml`. Then navigate to kibana at [ELK public IP]:5601/app/kibana to check that the installation worked as expected.
