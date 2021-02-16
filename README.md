@@ -62,7 +62,7 @@ A summary of the access policies in place can be found in the table below.
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because Ansible's agentless architecture allows for flexible integration, and efficient and seamless deployement, while eliminating human error across systems.
 
-The playbook implements the following tasks:
+The [ELK-Playbook](Ansible/elk_docker.yml) playbook implements the following tasks:
 - Install Docker.
 - Download cmage.
 - Configure container.
