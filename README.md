@@ -100,7 +100,11 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 
-Curl the below four commands to copy both Filebeat and Metricbeat configuration and playbook .yml files: 
+- Run the command `sudo docker ps -a` to get the name of the conainter and check the status of said container. 
+
+- Run the command `sudo docker start <container name> && sudo docker attach <container name>` to start and connect to the container.
+
+- Curl the below four commands to copy both Filebeat and Metricbeat configuration and playbook .yml files: 
 
 ```bash
 curl https://raw.githubusercontent.com/joshdsmith/Elk-Stack/main/Ansible/files/filebeat-config.yml > /etc/ansible/files/filebeat-config.yml
