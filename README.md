@@ -6,7 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select portions of the .yml files may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._ (Ansible/files/filebeat-config.yml)
+  - [Filebeat Playbook] (Ansible/Beat-playbooks/filebeat-config.yml)
 
 This document contains the following details:
 - Description of the Topologu
@@ -21,15 +21,14 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Load balancing ensures that the application will be highly dependable, in addition to restricting access to the network.
+- Load balancers help protect against distributed deinial of service (DDoS) attacks. One example of how this can be done is by shifting attack traffic from a corporate server to a public cloud provider. DDoS accounts for a large portion of cybercrime and it can be extremely expensive if a company becomes victim to such an attack. Luckily, the costs associated with temporarily redirecting attack traffic to a cloud provider is far less than traditional hardware defense, such as a permiter firewall. Suplementing a network with a Jump Box can be extremely advantageous. This hidden machine restricts administrative access to the network while reducing operational costs and human error. Vulnerability risks associated with Jump Box's can be mitigated with hardening techniques like reducing subnet size, restricing programs, enabling strong logging, and not allowing outbound access to the rest of the internet from the jump server.  
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file system and system traffic.
+- Filebeat helps generate and organize log files to send to Logstash and Elasticsearch. Specifically, it logs information about the file system, including which files have changed and when.
+- Metricbeat is a lightweight shipper that you can install on your servers to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name                  |        Function        | IP Address | Operating System |
 |-----------------------|:----------------------:|:----------:|:----------------:|
@@ -43,19 +42,21 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump Box and ELK machines can accept connections from the Internet. Access to these machines are only allowed from the following IP addresses:
+- Whitelisted IP's - 73.71.90.40 (Personal Machine)
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by accessing the DVWA container on the Jump Box VM.
+- The two machines that have access to the ELK VM are my personal IP, 73.71.90.40, and the Jump Box VM (10.0.0.6), through a peering connection.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name                 | Publicly Accessible | Allowed IP Addresses  |
+|----------------------|:-------------------:|-----------------------|
+| Jump-Box_Provisioner |         YES         | 10.0.0.6, 73.71.90.40 |
+| Web-1                |          NO         | 10.0.0.6              |
+| Web-2                |          NO         | 10.0.0.6              |
+| Web-3                |          NO         | 10.0.0.6              |
+| ELK                  |         YES         | 10.0.0.6, 73.71.90.40 |
 
 ### Elk Configuration
 
